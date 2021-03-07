@@ -1,0 +1,34 @@
+<div class="card w-70">
+    <div class="card-body">
+        <h5 class="card-title pb-0">Select Planets you want to search in</h5>
+        <form [formGroup]="falconeForm" #form>
+            <div formArrayName="destinations" class="col-md-12 card-dropdown">
+                <div *ngFor="let dest of falconeForm.get('destinations')['controls'];let i = index" [formGroup]="dest"
+                    class="col-md-3">
+                    <label class="card-dropdown-label" for="planets">Destination {{i+1}}</label>
+                    <select formControlName="planets" (change)="selectPlanet($event, i)">
+                        <option value="">--SELECT--</option>
+                        <option *ngFor="let planet of destinations.get([i + '', 'planetList']).value;"
+                            [value]="planet.name" [attr.disabled]="planet.is_active ? null : false ">{{planet.name}}
+                        </option>
+                    </select>
+                    <div class="radio"><label *ngFor="let vehicle of destinations.get([i + '', 'vehiclesList']).value"
+                            class="card-radio">
+                            <input type="radio" formControlName="vehicles" [value]="vehicle.name"
+                                (change)="selectVehicle($event, i)"
+                                [attr.disabled]="vehicle.total_no > 0 && vehicle.max_distance >= getCurrentPlant(i) ? null : false">
+                            {{ vehicle.name }}({{vehicle.total_no}})<br>
+                        </label></div>
+                </div>
+                <div class="card-button">
+                    <button (click)="submit()" [attr.disabled]="isFormValid() ? null: false">Find Falcone!</button>
+                </div>
+            </div>
+        </form>
+        <div class="card-time-taken">
+            <h5>Time taken : {{this.sumTimeTaken}}</h5>
+            <!-- <button (click)="reset()">reset</button> -->
+        </div>
+        <!-- <pre>{{ falconeForm.value | json }}</pre> -->
+    </div>
+</div>

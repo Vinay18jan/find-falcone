@@ -1,0 +1,6 @@
+<select formControlName="formcontrolname" (change)="selectPlanet($event, i)">
+    <option value="">--SELECT--</option>
+    <option *ngFor="let planet of planetList;"
+        [value]="planet.name" [attr.disabled]="planet.is_active ? null : false ">{{planet.name}}
+    </option>
+</select>

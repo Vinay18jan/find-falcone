@@ -1,0 +1,40 @@
+.w-70 {
+    width: 70% !important;
+    margin-left: 15%;
+    height: 80%;
+    margin-top: 5%;
+}
+
+.card-title {
+    text-align: center;
+}
+
+.card-body {
+    padding-bottom: 2rem;
+}
+
+.card-dropdown {
+    display: flex;
+    align-items: flex-start;
+}
+
+.card-dropdown-label {
+    padding: 10px;
+}
+
+.card-button {
+    text-align: center;
+    top: 100%;
+    left: 42%;
+    position: absolute;
+}
+
+.card-time-taken {
+    position: absolute;
+    top: 10%;
+    right: 1%;
+}
+
+.pb-0 {
+    padding-bottom: 1rem !important;
+}
